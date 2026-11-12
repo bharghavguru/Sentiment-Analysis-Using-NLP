@@ -1,14 +1,14 @@
 # Sentiment Analysis Using NLP
 
-A Machine Learning project that classifies IMDb movie reviews as **Positive** or **Negative** using Natural Language Processing (NLP).
+This is a machine learning project I built to classify IMDb movie reviews as **Positive** or **Negative** using Natural Language Processing (NLP).
+
+I worked with the IMDb 50K Movie Reviews dataset, cleaned the review text, converted it into numerical features using TF-IDF, and trained machine learning models to predict sentiment.
 
 ## Project Overview
 
-This project uses the IMDb 50K Movie Reviews dataset to build a sentiment classification model.
+The main goal of this project was to understand how machine learning can be used to identify sentiment in text.
 
-It applies text preprocessing, TF-IDF vectorization, and machine learning algorithms to identify the sentiment expressed in movie reviews.
-
-The final model is Logistic Regression, selected after comparing its performance with Multinomial Naive Bayes.
+I experimented with two classification algorithms, Logistic Regression and Multinomial Naive Bayes, and compared their results to find the better-performing model.
 
 ## Technologies Used
 
@@ -26,6 +26,10 @@ The final model is Logistic Regression, selected after comparing its performance
 
 [Kaggle Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
 
+The dataset contains 50,000 movie reviews labelled as positive or negative.
+
+After checking the data and removing duplicate rows, I worked with:
+
 - Original reviews: 50,000
 - Duplicate rows removed: 418
 - Final reviews: 49,582
@@ -36,25 +40,25 @@ The dataset is not included in this repository. Download it from Kaggle and plac
 
 ## Project Workflow
 
-1. Exploratory Data Analysis (EDA)
-2. Text preprocessing
-   - HTML tag removal
-   - Lowercase conversion
-   - Special character removal
-   - Whitespace normalization
-3. TF-IDF vectorization
-4. Train-test splitting (80:20)
-5. Model training
-   - Logistic Regression
-   - Multinomial Naive Bayes
-6. Model evaluation
-7. Feature importance analysis
-8. Saving the trained model
-9. Predicting sentiment from new reviews
+Here are the main steps I followed while building this project:
+
+1. **Exploratory Data Analysis (EDA)** – Checked the dataset, missing values, duplicates and sentiment distribution.
+2. **Text Preprocessing**
+   - Removed HTML tags.
+   - Converted reviews to lowercase.
+   - Removed special characters.
+   - Cleaned extra spaces.
+3. **TF-IDF Vectorization** – Converted the cleaned reviews into numerical features using unigrams and bigrams.
+4. **Train-Test Split** – Divided the dataset into 80% training data and 20% testing data.
+5. **Model Training** – Trained Logistic Regression and Multinomial Naive Bayes.
+6. **Model Evaluation** – Compared both models using different evaluation metrics.
+7. **Feature Analysis** – Checked which words had stronger positive and negative associations.
+8. **Model Saving** – Saved the trained model and TF-IDF vectorizer using Joblib.
+9. **Prediction** – Created a Python script to test the model with new movie reviews.
 
 ## Model Performance
 
-The models were evaluated on 9,917 unseen test reviews.
+I tested both models using 9,917 reviews that were not used during training.
 
 | Metric | Logistic Regression | Multinomial Naive Bayes |
 |---|---:|---:|
@@ -63,25 +67,31 @@ The models were evaluated on 9,917 unseen test reviews.
 | ROC-AUC | 96.38% | 94.13% |
 | PR-AUC | 96.39% | 93.91% |
 
-**Final Model: Logistic Regression**
-
-Logistic Regression achieved better performance across the reported evaluation metrics and was selected as the final model.
+After comparing the results, I selected **Logistic Regression** as the final model because it performed better across all the metrics listed above.
 
 ## Visualizations
 
+I created the following graphs to compare the models and understand their performance.
+
 ### Model Comparison
+
 ![Model Comparison](reports/figures/model_comparison.png)
 
 ### ROC Curve
+
 ![ROC Curve](reports/figures/roc_curve_comparison.png)
 
 ### Precision-Recall Curve
+
 ![Precision Recall Curve](reports/figures/precision_recall_curve.png)
 
 ### Feature Importance
+
 ![Feature Importance](reports/figures/feature_importance.png)
 
 ## Run the Project Locally
+
+Want to try the project on your machine? Follow these steps.
 
 ### 1. Clone the repository
 
@@ -98,25 +108,25 @@ python -m venv venv
 
 ### 3. Activate the environment
 
-Windows PowerShell:
+For Windows PowerShell:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-### 4. Install dependencies
+### 4. Install the required packages
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Run sentiment prediction
+### 5. Run the prediction program
 
 ```bash
 python predict.py
 ```
 
-Enter a movie review when prompted. The program returns its predicted sentiment and model confidence.
+Enter any movie review when the program asks for it. The model will predict whether the review is positive or negative and display its estimated confidence.
 
 ## Example Prediction
 
@@ -165,17 +175,16 @@ Sentiment-Analysis-Using-NLP/
 
 ## Limitations
 
-- The model classifies reviews into only two categories: Positive and Negative.
-- Neutral sentiment is not supported.
-- The model uses TF-IDF and traditional machine learning rather than transformer-based language models.
-- Prediction confidence represents the model's estimated probability, not a guarantee of correctness.
+- The model predicts only positive or negative sentiment. It does not identify neutral reviews.
+- It uses TF-IDF and traditional machine learning algorithms rather than deep learning models.
+- The confidence score is the model's estimated probability and does not guarantee that every prediction is correct.
 
 ## Future Improvements
 
-- Experiment with advanced NLP models such as LSTM and BERT.
-- Improve text preprocessing and feature extraction.
-- Explore hyperparameter tuning.
-- Investigate handling of neutral and mixed sentiment.
+- Experiment with LSTM and BERT models.
+- Try different text preprocessing techniques.
+- Explore hyperparameter tuning to improve model performance.
+- Extend the project to support neutral sentiment.
 
 ## Author
 
