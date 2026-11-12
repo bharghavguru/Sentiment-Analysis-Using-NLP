@@ -1,16 +1,47 @@
 # Sentiment Analysis Using NLP
 
-This is a machine learning project I built to classify IMDb movie reviews as **Positive** or **Negative** using Natural Language Processing (NLP).
+## 1. Project Overview
 
-I worked with the IMDb 50K Movie Reviews dataset, cleaned the review text, converted it into numerical features using TF-IDF, and trained machine learning models to predict sentiment.
+This project focuses on classifying IMDb movie reviews as **Positive** or **Negative** using Natural Language Processing (NLP) and Machine Learning techniques.
 
-## Project Overview
+I worked with the IMDb 50K Movie Reviews dataset, performed text preprocessing, converted reviews into numerical features using TF-IDF, and trained machine learning models for sentiment classification.
 
-The main goal of this project was to understand how machine learning can be used to identify sentiment in text.
+Two classification algorithms, Logistic Regression and Multinomial Naive Bayes, were implemented and evaluated to compare their performance.
 
-I experimented with two classification algorithms, Logistic Regression and Multinomial Naive Bayes, and compared their results to find the better-performing model.
+## 2. Project Objectives
 
-## Technologies Used
+- Analyze and understand the IMDb movie review dataset.
+- Perform exploratory data analysis (EDA).
+- Clean and preprocess review text.
+- Convert text into numerical features using TF-IDF.
+- Train Logistic Regression and Multinomial Naive Bayes models.
+- Evaluate and compare model performance.
+- Analyze important words influencing sentiment predictions.
+- Save the trained model and vectorizer for future predictions.
+
+## 3. Dataset
+
+**Dataset:** IMDb 50K Movie Reviews Dataset
+
+**Source:** [Kaggle – IMDb 50K Movie Reviews](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
+
+The dataset contains 50,000 movie reviews labelled as positive or negative.
+
+**Dataset details after removing duplicates:**
+
+| Description | Count |
+|---|---:|
+| Original reviews | 50,000 |
+| Duplicate rows removed | 418 |
+| Final reviews | 49,582 |
+| Positive reviews | 24,884 |
+| Negative reviews | 24,698 |
+
+The dataset contains two columns: `review` (movie review text) and `sentiment` (positive or negative).
+
+The dataset is not included in this repository. Download it from Kaggle and place `IMDB Dataset.csv` inside the `data/` directory.
+
+## 4. Technologies Used
 
 - Python
 - Pandas and NumPy
@@ -19,131 +50,9 @@ I experimented with two classification algorithms, Logistic Regression and Multi
 - Matplotlib and Seaborn
 - Jupyter Notebook
 - Joblib
+- Git and GitHub
 
-## Dataset
-
-**IMDb 50K Movie Reviews Dataset**
-
-[Kaggle Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
-
-The dataset contains 50,000 movie reviews labelled as positive or negative.
-
-After checking the data and removing duplicate rows, I worked with:
-
-- Original reviews: 50,000
-- Duplicate rows removed: 418
-- Final reviews: 49,582
-- Positive reviews: 24,884
-- Negative reviews: 24,698
-
-The dataset is not included in this repository. Download it from Kaggle and place `IMDB Dataset.csv` inside the `data/` folder.
-
-## Project Workflow
-
-Here are the main steps I followed while building this project:
-
-1. **Exploratory Data Analysis (EDA)** – Checked the dataset, missing values, duplicates and sentiment distribution.
-2. **Text Preprocessing**
-   - Removed HTML tags.
-   - Converted reviews to lowercase.
-   - Removed special characters.
-   - Cleaned extra spaces.
-3. **TF-IDF Vectorization** – Converted the cleaned reviews into numerical features using unigrams and bigrams.
-4. **Train-Test Split** – Divided the dataset into 80% training data and 20% testing data.
-5. **Model Training** – Trained Logistic Regression and Multinomial Naive Bayes.
-6. **Model Evaluation** – Compared both models using different evaluation metrics.
-7. **Feature Analysis** – Checked which words had stronger positive and negative associations.
-8. **Model Saving** – Saved the trained model and TF-IDF vectorizer using Joblib.
-9. **Prediction** – Created a Python script to test the model with new movie reviews.
-
-## Model Performance
-
-I tested both models using 9,917 reviews that were not used during training.
-
-| Metric | Logistic Regression | Multinomial Naive Bayes |
-|---|---:|---:|
-| Accuracy | 90.16% | 86.77% |
-| Weighted F1-score | 90.16% | 86.77% |
-| ROC-AUC | 96.38% | 94.13% |
-| PR-AUC | 96.39% | 93.91% |
-
-After comparing the results, I selected **Logistic Regression** as the final model because it performed better across all the metrics listed above.
-
-## Visualizations
-
-I created the following graphs to compare the models and understand their performance.
-
-### Model Comparison
-
-![Model Comparison](reports/figures/model_comparison.png)
-
-### ROC Curve
-
-![ROC Curve](reports/figures/roc_curve_comparison.png)
-
-### Precision-Recall Curve
-
-![Precision Recall Curve](reports/figures/precision_recall_curve.png)
-
-### Feature Importance
-
-![Feature Importance](reports/figures/feature_importance.png)
-
-## Run the Project Locally
-
-Want to try the project on your machine? Follow these steps.
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/bharghavguru/Sentiment-Analysis-Using-NLP.git
-cd Sentiment-Analysis-Using-NLP
-```
-
-### 2. Create a virtual environment
-
-```bash
-python -m venv venv
-```
-
-### 3. Activate the environment
-
-For Windows PowerShell:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
-### 4. Install the required packages
-
-```bash
-pip install -r requirements.txt
-```
-
-### 5. Run the prediction program
-
-```bash
-python predict.py
-```
-
-Enter any movie review when the program asks for it. The model will predict whether the review is positive or negative and display its estimated confidence.
-
-## Example Prediction
-
-**Input:**
-
-```text
-The movie was fantastic. The acting was brilliant and the story was amazing.
-```
-
-**Output:**
-
-```text
-Sentiment: POSITIVE
-Model confidence: 95.68%
-```
-
-## Repository Structure
+## 5. Project Structure
 
 ```text
 Sentiment-Analysis-Using-NLP/
@@ -173,19 +82,173 @@ Sentiment-Analysis-Using-NLP/
 └── README.md
 ```
 
-## Limitations
+## 6. Project Workflow
 
-- The model predicts only positive or negative sentiment. It does not identify neutral reviews.
-- It uses TF-IDF and traditional machine learning algorithms rather than deep learning models.
-- The confidence score is the model's estimated probability and does not guarantee that every prediction is correct.
+### Step 1: Exploratory Data Analysis
 
-## Future Improvements
+- Loaded and inspected the dataset.
+- Checked missing values and duplicate records.
+- Analyzed positive and negative review distribution.
+- Examined review lengths and text patterns.
+- Created visualizations to understand the dataset.
 
-- Experiment with LSTM and BERT models.
-- Try different text preprocessing techniques.
-- Explore hyperparameter tuning to improve model performance.
-- Extend the project to support neutral sentiment.
+### Step 2: Text Preprocessing
 
-## Author
+The following preprocessing operations were performed:
 
-**GitHub:** [bharghavguru](https://github.com/bharghavguru)
+- Removed HTML tags.
+- Converted reviews to lowercase.
+- Removed special characters.
+- Cleaned extra spaces.
+
+A new column named `cleaned_review` was created to store the processed text.
+
+### Step 3: TF-IDF Vectorization
+
+TF-IDF (Term Frequency-Inverse Document Frequency) was used to convert cleaned reviews into numerical feature vectors.
+
+The vectorizer was configured with:
+
+| Parameter | Value |
+|---|---|
+| max_features | 10,000 |
+| ngram_range | (1, 2) |
+| min_df | 2 |
+| max_df | 0.95 |
+
+Both unigrams and bigrams were considered during vectorization.
+
+### Step 4: Train-Test Split
+
+The dataset was divided into training and testing sets using stratified sampling.
+
+- Training set: 80% (39,665 reviews)
+- Testing set: 20% (9,917 reviews)
+
+The TF-IDF vectorizer was fitted only on the training data and then used to transform the test data to avoid data leakage.
+
+### Step 5: Model Training
+
+Two classification algorithms were implemented:
+
+**1. Logistic Regression**
+
+Used as a classification model to predict whether a movie review expresses positive or negative sentiment.
+
+**2. Multinomial Naive Bayes**
+
+Implemented as a second model for comparison. It is commonly used for text classification tasks.
+
+### Step 6: Model Evaluation
+
+Both models were evaluated using:
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
+- Precision-Recall AUC (PR-AUC)
+
+### Step 7: Feature Analysis and Model Saving
+
+- Analyzed Logistic Regression coefficients to identify words associated with positive and negative sentiment.
+- Saved the trained Logistic Regression model and TF-IDF vectorizer using Joblib.
+- Created `predict.py` to classify new movie reviews.
+
+## 7. Model Performance Comparison
+
+Both models were evaluated using 9,917 unseen movie reviews.
+
+| Evaluation Metric | Logistic Regression | Multinomial Naive Bayes |
+|---|---:|---:|
+| Accuracy | 90.16% | 86.77% |
+| Weighted F1-score | 90.16% | 86.77% |
+| ROC-AUC | 96.38% | 94.13% |
+| PR-AUC | 96.39% | 93.91% |
+
+Based on the results, **Logistic Regression** was selected as the final model because it achieved better performance across all the evaluated metrics.
+
+## 8. Model Evaluation Visualizations
+
+### 8.1 Model Comparison
+
+Compares Logistic Regression and Multinomial Naive Bayes across the evaluation metrics.
+
+![Model Comparison](reports/figures/model_comparison.png)
+
+### 8.2 ROC Curve
+
+Shows the relationship between the True Positive Rate and False Positive Rate at different classification thresholds.
+
+![ROC Curve](reports/figures/roc_curve_comparison.png)
+
+### 8.3 Precision-Recall Curve
+
+Shows the trade-off between precision and recall for both classification models.
+
+![Precision-Recall Curve](reports/figures/precision_recall_curve.png)
+
+### 8.4 Feature Importance
+
+Displays words with strong positive and negative associations based on the Logistic Regression model coefficients.
+
+![Feature Importance](reports/figures/feature_importance.png)
+
+## 9. Running the Project Locally
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/bharghavguru/Sentiment-Analysis-Using-NLP.git
+cd Sentiment-Analysis-Using-NLP
+```
+
+### Step 2: Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### Step 3: Activate the Environment
+
+For Windows PowerShell:
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+
+### Step 4: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 5: Run the Prediction Script
+
+```bash
+python predict.py
+```
+
+The script accepts a movie review as input and predicts whether its sentiment is positive or negative. It also displays the model's estimated confidence score.
+
+## 10. Example Prediction
+
+**Input:**
+
+```text
+The movie was fantastic. The acting was brilliant and the story was amazing.
+```
+
+**Output:**
+
+```text
+Sentiment: POSITIVE
+Model confidence: 95.68%
+```
+
+---
+
+**Project Type:** Machine Learning | NLP | Text Classification | Sentiment Analysis
+
+**Repository:** [Sentiment Analysis Using NLP](https://github.com/bharghavguru/Sentiment-Analysis-Using-NLP)
